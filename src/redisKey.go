@@ -48,6 +48,8 @@ func RedisKeyScan(cliContext *cli.Context) error {
 		}
 	}
 
+	log.Printf("scanRedisKey total found %d key\n", n)
+
 	return nil
 }
 
@@ -91,6 +93,9 @@ func main() {
 		if cliContext.Args().Len() != 1 || len(cliContext.Args().Get(0)) == 0 {
 			return cli.ShowAppHelp(cliContext)
 		}
+
+		log.Printf("scanRedisKey %s\n", cliContext.Args().Get(0))
+
 		return RedisKeyScan(cliContext)
 	}
 
